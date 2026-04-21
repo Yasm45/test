@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- ========================================================================
+         ОСНОВНЫЕ МЕТА-ТЕГИ
+         ======================================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Гарипова Ясмина Рустямовна">
+    <meta name="description" content="AgeFun — страница игры с описанием, правилами, отзывами и возможностью добавить в избранное/корзину">
+    <title>AgeFun — Игра</title>
+    
+    <!-- ========================================================================
+         ПОДКЛЮЧЕНИЕ СТИЛЕЙ
+         ======================================================================== -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- ========================================================================
+     ШАПКА САЙТА (HEADER)
+     ======================================================================== -->
+<header>
+    <div class="container head">
+        <!-- Логотип с ссылкой на главную -->
+        <a href="../../index.html" class="logo">AgeFun</a>
+        
+        <!-- Бургер-меню (отображается на мобильных устройствах) -->
+        <div class="burger" id="burgerBtn">
+            <span></span><span></span><span></span>
+        </div>
+        
+        <!-- Навигационное меню -->
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ========================================================================
+     ОСНОВНОЙ КОНТЕНТ (СТРАНИЦА ИГРЫ)
+     ======================================================================== -->
+<main class="game-container">
+    <div class="container">
+        
+        <!-- ========================================================================
+             ЗАГОЛОВОК ИГРЫ (динамически заполняется через JavaScript)
+             ======================================================================== -->
+        <div class="game-header">
+            <h1 id="gameName">Мафия</h1>
+            <p class="game-subtitle" id="gameSubtitle">Психологическая детективная игра для большой компании</p>
+            <div class="game-meta-info">
+                <span id="gamePlayers">6-12 человек</span>
+                <span id="gameTime">30-60 минут</span>
+                <span id="gameAge">14+ лет</span>
+                <span id="gameMeta">колода карт, ведущий</span>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             ПРЕВЬЮ ИГРЫ (КАРТИНКА + ОПИСАНИЕ + ЦЕНА + КНОПКИ)
+             ======================================================================== -->
+        <div class="game-preview">
+            <!-- Изображение игры -->
+            <div class="game-image">
+                <img src="../img/mafia_game.webp" alt="Мафия" id="gameImage">
+            </div>
+            <!-- Описание и кнопки действий -->
+            <div class="game-short-desc">
+                <p id="gameDescription">«Мафия» — культовая психологическая игра...</p>
+                <div class="game-price" id="gamePrice">1 290 ₽</div>
+                <div class="game-actions">
+                    <button class="game-favorite-btn" id="favoriteBtn">🤍 В избранное</button>
+                    <button class="game-cart-btn" id="cartBtn">🛒 В корзину</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             РЕЙТИНГ ИГРЫ (ЗВЁЗДЫ + КНОПКА ОЦЕНИТЬ)
+             ======================================================================== -->
+        <div class="game-rating">
+            <h3>⭐ Рейтинг игры</h3>
+            <div class="rating-stars" id="ratingStars">
+                <span class="star" data-value="1">☆</span>
+                <span class="star" data-value="2">☆</span>
+                <span class="star" data-value="3">☆</span>
+                <span class="star" data-value="4">☆</span>
+                <span class="star" data-value="5">☆</span>
+            </div>
+            <button class="rating-submit-btn" id="ratingSubmitBtn">Оценить</button>
+            <div class="rating-value" id="ratingValue">0 / 5 (0 голосов)</div>
+        </div>
+
+        <!-- ========================================================================
+             РЕКВИЗИТ ДЛЯ ИГРЫ
+             ======================================================================== -->
+        <div class="section-wrapper">
+            <h2 class="section-title">🎲 Что нужно для игры</h2>
+            <div class="requisites-grid">
+                <div class="requisite-item">
+                    <div class="requisite-img" style="background-image: url('../img/card_1.jpeg');"></div>
+                    <p>Игровые карты</p>
+                </div>
+                <div class="requisite-item">
+                    <div class="requisite-img" style="background-image: url('../img/mask_game.webp');"></div>
+                    <p>Маски для ночи</p>
+                </div>
+                <div class="requisite-item">
+                    <div class="requisite-img" style="background-image: url('../img/table.webp')"></div>
+                    <p>Стол и стулья</p>
+                </div>
+                <div class="requisite-item">
+                    <div class="requisite-img" style="background-image: url('../img/leader.webp');"></div>
+                    <p>Ведущий</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             ПРАВИЛА ИГРЫ (ПОШАГОВО)
+             ======================================================================== -->
+        <div class="section-wrapper">
+            <h2 class="section-title">📖 Правила игры</h2>
+            <div class="rules-container">
+                <!-- Шаг 1 -->
+                <div class="rule-step">
+                    <div class="rule-number">1</div>
+                    <div class="rule-text">
+                        <h3>Подготовка</h3>
+                        <p>Ведущий раздаёт карты ролей: мафия, мирные жители, шериф. Игроки не показывают карты друг другу.</p>
+                    </div>
+                </div>
+                <!-- Шаг 2 -->
+                <div class="rule-step">
+                    <div class="rule-number">2</div>
+                    <div class="rule-text">
+                        <h3>Ночь</h3>
+                        <p>Все закрывают глаза. Мафия выбирает жертву. Шериф проверяет одного игрока.</p>
+                    </div>
+                </div>
+                <!-- Шаг 3 -->
+                <div class="rule-step">
+                    <div class="rule-number">3</div>
+                    <div class="rule-text">
+                        <h3>День</h3>
+                        <p>Ведущий объявляет жертву. Игроки обсуждают и голосуют за «казнь» подозреваемого.</p>
+                    </div>
+                </div>
+                <!-- Шаг 4 -->
+                <div class="rule-step">
+                    <div class="rule-number">4</div>
+                    <div class="rule-text">
+                        <h3>Цель</h3>
+                        <p>Мирные вычислить мафию, мафия — уничтожить мирных.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             ОТЗЫВЫ ПОЛЬЗОВАТЕЛЕЙ
+             ======================================================================== -->
+        <div class="section-wrapper">
+            <h2 class="section-title">💬 Отзывы</h2>
+            <div class="reviews-grid">
+                <!-- Отзыв 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="../img/avatar-anna.jpg" alt="Аватар Анны Смирновой" class="review-avatar">
+                        <div>
+                            <h4>Анна Смирнова</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Играли на дне рождения. Все в восторге!"</p>
+                    <span class="review-date">10.04.2026</span>
+                </div>
+                <!-- Отзыв 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="../img/avatar-dmitry.jpg" alt="Аватар Дмитрия Волкова" class="review-avatar">
+                        <div>
+                            <h4>Дмитрий Волков</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Лучшая игра для компаний от 6 человек."</p>
+                    <span class="review-date">22.03.2026</span>
+                </div>
+                <!-- Отзыв 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="../img/avatar-elena.jpg" alt="Аватар Елены Морозовой" class="review-avatar">
+                        <div>
+                            <h4>Елена Морозова</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Правила простые, игра никогда не надоедает."</p>
+                    <span class="review-date">05.02.2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             КНОПКА ВОЗВРАТА В КАТАЛОГ
+             ======================================================================== -->
+        <div class="game-back-btn">
+            <a href="catalog.html">← Вернуться к каталогу</a>
+        </div>
+        
+    </div>
+</main>
+
+<!-- ========================================================================
+     ПОДВАЛ (FOOTER)
+     ======================================================================== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">AgeFun</div>
+            <div class="footer-icons">
+                <div class="footer-icon">
+                    <a href="#">Ясмина Гарипова</a>
+                    <img src="../img/vk.jpg" alt="Иконка ВКонтакте">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">+7 987 243-34-23</a>
+                    <img src="../img/number..jpg" alt="Иконка телефона">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">garipova270508</a>
+                    <img src="../img/MAX.jpg" alt="Иконка социальной сети">
+                </div>
+            </div>
+            <div class="footer-line"></div>
+            <div class="footer-bottom">
+                <p>Играйте с удовольствием</p>
+                <p>© 2026 AgeFun</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ========================================================================
+     ФИКСИРОВАННЫЕ КНОПКИ
+     ======================================================================== -->
+
+<!-- Кнопка корзины (в левом нижнем углу) -->
+<div class="cart-fixed">
+    <div class="cart-wrapper">
+        <button id="cart-icon">
+            <img src="../img/cart-icon.png" alt="Иконка корзины" id="cart-img">
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </div>
+</div>
+
+<!-- Кнопка переключения тёмной/светлой темы (в правом нижнем углу) -->
+<div class="theme-fixed">
+    <button id="theme-switch">
+        <!-- Иконка солнца (светлая тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/>
+        </svg>
+        <!-- Иконка луны (тёмная тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
+        </svg>
+    </button>
+</div>
+
+<!-- ========================================================================
+     МОДАЛЬНОЕ ОКНО КОРЗИНЫ
+     ======================================================================== -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h3>Корзина</h3>
+            <button class="close-cart-modal" id="closeCartModalBtn">&times;</button>
+        </div>
+        <!-- Список товаров в корзине (динамически заполняется через JavaScript) -->
+        <div class="cart-items-list" id="cartItemsList">
+            <div class="empty-cart-message">Корзина пуста</div>
+        </div>
+        <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
+        <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+    </div>
+</div>
+
+<!-- ========================================================================
+     ПОДКЛЮЧЕНИЕ СКРИПТОВ
+     ======================================================================== -->
+<script src="../js/burger.js"></script>
+<script src="../js/game.js"></script>
+</body>
+</html>

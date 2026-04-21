@@ -1,0 +1,2875 @@
+/* ========================================================================
+   ПОДКЛЮЧЕНИЕ ШРИФТОВ
+   ======================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Oswald:wght@200..700&family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ========================================================================
+   CSS ПЕРЕМЕННЫЕ (цвета, шрифты)
+   ======================================================================== */
+:root {
+    --font-primary: "Poppins", "Inter", sans-serif;  /* Основной шрифт */
+    --font-secondary: "Oswald", sans-serif;          /* Второстепенный шрифт для заголовков */
+    --color-primary: #791919;    /* Бордовый — основной цвет сайта */
+    --color-secondary: #ffd966;  /* Золотой/жёлтый — акцентный цвет */
+    --color-dark: #1a1a1a;       /* Тёмный фон для тёмной темы */
+    --color-light: #f5f5f5;      /* Светлый фон для светлой темы */
+    --color-white: #ffffff;      /* Белый цвет */
+    --color-gray: #555555;        /* Серый для текста */
+    --color-gray-light: #888888;  /* Светло-серый */
+}
+
+/* ========================================================================
+   ГЛОБАЛЬНЫЕ СБРОСЫ И БАЗОВЫЕ СТИЛИ
+   ======================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Учитываем padding и border в ширине элемента */
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.5;
+    transition: background 0.3s ease, color 0.3s ease;  /* Плавная смена темы */
+    overflow-x: hidden;  /* Убираем горизонтальную прокрутку */
+}
+
+/* Все медиа-элементы не выходят за границы */
+img, iframe, video {
+    max-width: 100%;
+}
+
+/* Центрирующий контейнер */
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* ========================================================================
+   ШАПКА САЙТА (HEADER)
+   ======================================================================== */
+header {
+    background: var(--color-primary);
+    padding: 16px 0;
+    border-bottom: 3px solid var(--color-secondary);
+    position: sticky;   /* Прилипает при скролле */
+    top: 0;
+    z-index: 1000;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.logo {
+    font-family: var(--font-secondary);
+    background: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 35px;
+    border: 2px solid var(--color-secondary);
+    display: inline-block;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================================================
+   БУРГЕР-МЕНЮ (МОБИЛЬНАЯ НАВИГАЦИЯ)
+   ======================================================================== */
+.burger {
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--color-secondary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Анимация превращения бургера в крестик при открытии меню */
+.burger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* ========================================================================
+   НАВИГАЦИОННОЕ МЕНЮ (ВЫЕЗЖАЮЩЕЕ)
+   ======================================================================== */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--color-white);
+    box-shadow: 5px 0 35px rgba(0, 0, 0, 0.08);
+    padding: 100px 28px 40px;
+    transition: left 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    z-index: 1000;
+    border-right: 4px solid var(--color-secondary);
+}
+
+.nav-menu.active { left: 0; }  /* Открытое состояние */
+
+.nav-menu ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.nav-menu ul li a {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--color-dark);
+    text-decoration: none;
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.25s ease;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    padding-left: 12px;
+    background: linear-gradient(90deg, rgba(255, 217, 102, 0.15), transparent);
+}
+
+/* ========================================================================
+   ТЁМНАЯ ТЕМА (DARKMODE) — ПЕРЕОПРЕДЕЛЕНИЕ СТИЛЕЙ
+   ======================================================================== */
+.darkmode {
+    background: var(--color-dark);
+    color: #f0f0f0;
+}
+
+.darkmode header {
+    background: var(--color-primary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.darkmode .logo {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.darkmode .logo:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .nav-menu {
+    background: #2a2a2a;
+    border-right-color: var(--color-secondary);
+}
+
+.darkmode .nav-menu ul li a {
+    color: #f0f0f0;
+    border-bottom-color: #444444;
+}
+
+.darkmode .nav-menu ul li a:hover,
+.darkmode .nav-menu ul li a.active {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.darkmode .about-us,
+.darkmode .filter-section {
+    background: var(--color-dark);
+}
+
+.darkmode .about-us h2 {
+    color: var(--color-secondary);
+}
+
+.darkmode .accordion-item {
+    border-color: #444444;
+    background: #2a2a2a;
+}
+
+.darkmode .accordion-header {
+    background: #2a2a2a;
+    border-left-color: var(--color-secondary);
+}
+
+.darkmode .accordion-header h3 {
+    color: #f0f0f0;
+}
+
+.darkmode .accordion-icon {
+    color: var(--color-secondary);
+}
+
+.darkmode .accordion-content p {
+    color: #bbbbbb;
+}
+
+.darkmode .slider-text {
+    color: var(--color-secondary);
+}
+
+.darkmode .filter-tab {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.darkmode .filter-tab.active {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-secondary);
+}
+
+.darkmode .filter-tab:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .popular-card,
+.darkmode .team-card,
+.darkmode .contact-info,
+.darkmode .feedback-form-wrapper {
+    background: #2a2a2a;
+    border-color: #444444;
+}
+
+.darkmode .popular-card h3,
+.darkmode .team-card h3,
+.darkmode .contact-item h3 {
+    color: var(--color-secondary);
+}
+
+.darkmode .game-meta span {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.darkmode .price {
+    color: var(--color-secondary);
+}
+
+.darkmode .popular-card p,
+.darkmode .team-desc,
+.darkmode .contact-item p {
+    color: #bbbbbb;
+}
+
+.darkmode .popular-btn {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-primary);
+}
+
+.darkmode .popular-btn:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.darkmode .team-card p {
+    color: var(--color-gray-light);
+}
+
+.darkmode .feedback-form-wrapper {
+    background: #2a2a2a;
+    border-color: #444444;
+}
+
+.darkmode .form-row input,
+.darkmode .feedback-form textarea {
+    background: var(--color-dark);
+    border-color: #444444;
+    color: #f0f0f0;
+}
+
+.darkmode .feedback-btn {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .feedback-btn:hover {
+    background: #ffcc44;
+    transform: scale(1.02);
+}
+
+.darkmode .modal-content {
+    background: #2a2a2a;
+}
+
+.darkmode .modal-content h3 {
+    color: var(--color-secondary);
+}
+
+.darkmode .modal-content p {
+    color: #bbbbbb;
+}
+
+.darkmode .modal-close {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode footer {
+    background: var(--color-dark);
+    border-top-color: var(--color-secondary);
+}
+
+.darkmode .footer-logo {
+    color: var(--color-secondary);
+}
+
+.darkmode .footer-icon {
+    background: #333333;
+}
+
+.darkmode .footer-icon a {
+    color: var(--color-white);
+}
+
+.darkmode .footer-icon:hover {
+    background: var(--color-primary);
+}
+
+/* ========================================================================
+   ГЕРОЙ С ВИДЕО-ФОНОМ (ГЛАВНАЯ СТРАНИЦА)
+   ======================================================================== */
+.hero {
+    position: relative;
+    height: 90vh;
+    min-height: 550px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Видео заполняет весь блок */
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);  /* Затемнение для читаемости текста */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-white);
+    max-width: 800px;
+    padding: 0 24px;
+    animation: fadeInUp 1s ease;  /* Анимация появления */
+}
+
+.hero-content h1 {
+    font-family: var(--font-secondary);
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #fff, var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-tagline {
+    font-size: clamp(14px, 3vw, 18px);
+    display: block;
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-weight: 500;
+}
+
+.hero-btn {
+    display: inline-block;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 14px 42px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn:hover {
+    transform: scale(1.05);
+    background: #ffcc44;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================================================
+   СЕКЦИЯ "О НАС" (АККОРДЕОН)
+   ======================================================================== */
+.about-us {
+    padding: 80px 0;
+    background: var(--color-light);
+}
+
+.about-us h2 {
+    font-family: var(--font-secondary);
+    font-size: clamp(32px, 5vw, 42px);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 12px;
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    background: var(--color-white);
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--color-primary);
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(255, 217, 102, 0.1);
+}
+
+.accordion-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.accordion-icon {
+    font-size: 22px;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+
+/* Поворот иконки при открытом аккордеоне */
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 24px;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 120px;   /* Достаточно для содержимого */
+    padding: 20px 24px;
+}
+
+.accordion-content p {
+    font-size: 15px;
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+/* ========================================================================
+   СЛАЙДЕР (BOOTSTRAP КАРУСЕЛЬ)
+   ======================================================================== */
+.slider-caption {
+    text-align: center;
+    margin: 50px 0 20px;
+}
+
+.slider-text {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(24px, 5vw, 34px);
+    color: var(--color-primary);
+    display: inline-block;
+}
+
+.carousel {
+    margin: 20px auto 60px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+}
+
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.05);  /* Увеличение картинки при наведении */
+}
+
+.carousel-caption {
+    background: linear-gradient(135deg, rgba(121, 25, 25, 0.85), rgba(0, 0, 0, 0.7));
+    border-radius: 20px;
+    padding: 12px 24px;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+}
+
+.carousel-caption h5 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--color-secondary);
+    margin: 0;
+}
+
+/* Кнопки переключения слайдов */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 40px;
+    height: 40px;
+    background: rgba(121, 25, 25, 0.7);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: var(--color-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ========================================================================
+   ФИЛЬТР (ТАБЫ) — ПЕРЕКЛЮЧЕНИЕ МЕЖДУ РАЗДЕЛАМИ
+   ======================================================================== */
+.filter-section {
+    padding: 40px 0 70px;
+    background: var(--color-light);
+}
+
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter-tab {
+    background: transparent;
+    border: 2px solid var(--color-secondary);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-tab.active {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+.filter-tab:hover {
+    transform: translateY(-3px);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Содержимое табов — скрыто по умолчанию */
+.tab-content {
+    display: none;
+    animation: fadeInUp 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ========================================================================
+   ПОПУЛЯРНЫЕ ИГРЫ (СЕТКА КАРТОЧЕК)
+   ======================================================================== */
+.popular-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.popular-card {
+    background: var(--color-white);
+    border-radius: 20px;
+    width: calc(25% - 15px);
+    min-width: 200px;
+    max-width: 260px;
+    border: 1px solid var(--color-secondary);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.popular-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.popular-img {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.popular-card:hover .popular-img {
+    transform: scale(1.05);
+}
+
+.popular-card h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-primary);
+    margin: 12px 12px 4px;
+    transition: color 0.3s ease;
+}
+
+.popular-card:hover h3 {
+    color: var(--color-secondary);
+    text-shadow: 0 0 2px var(--color-primary);
+}
+
+.game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 4px 12px 8px;
+}
+
+.game-meta span {
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--color-secondary);
+    padding: 3px 8px;
+    border-radius: 20px;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.popular-card:hover .game-meta span {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 6px 12px 0;
+    transition: color 0.3s ease;
+}
+
+.popular-card:hover .price {
+    color: var(--color-secondary);
+}
+
+.popular-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--color-gray);
+    margin: 0 12px 12px;
+    flex: 1;
+}
+
+.popular-btn {
+    display: inline-block;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
+    margin: 0 12px 14px;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.popular-btn:hover {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+/* ========================================================================
+   КОМАНДА (СЕТКА КАРТОЧЕК СОТРУДНИКОВ)
+   ======================================================================== */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.team-card {
+    background: var(--color-white);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 28px 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.team-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .team-photo {
+    transform: scale(1.05);
+    border-color: var(--color-primary);
+}
+
+.team-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.team-card:hover h3 {
+    color: var(--color-secondary);
+}
+
+.team-card p {
+    font-size: 14px;
+    color: var(--color-gray-light);
+    margin-bottom: 12px;
+}
+
+.team-desc {
+    font-size: 13px;
+    color: var(--color-gray);
+    line-height: 1.5;
+    display: block;
+}
+
+/* ========================================================================
+   КОНТАКТЫ (ИНФОРМАЦИЯ + КАРТА)
+   ======================================================================== */
+.contacts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 260px;
+    background: var(--color-white);
+    border-radius: 24px;
+    padding: 30px;
+    border: 1px solid var(--color-secondary);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(8px);
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+.contact-item p {
+    font-size: 14px;
+    color: var(--color-gray);
+}
+
+.contact-map {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.contact-map:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+}
+
+.contact-icon-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon-img {
+    transform: rotate(5deg) scale(1.05);
+}
+
+/* ========================================================================
+   ФОРМА ОБРАТНОЙ СВЯЗИ
+   ======================================================================== */
+.feedback-form-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #fafafa, var(--color-white));
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.feedback-form-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 15px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: var(--font-primary);
+    background: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.3s ease;
+}
+
+.form-row input:hover {
+    border-color: var(--color-secondary);
+}
+
+.form-row input:focus,
+.feedback-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(121, 25, 25, 0.1);
+}
+
+.feedback-form textarea {
+    padding: 15px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: var(--font-primary);
+    resize: vertical;
+    background: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.3s ease;
+}
+
+.feedback-form textarea:hover {
+    border-color: var(--color-secondary);
+}
+
+.feedback-btn {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 40px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.feedback-btn:hover {
+    background: #5e1313;
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(121, 25, 25, 0.3);
+}
+
+/* ========================================================================
+   МОДАЛЬНОЕ ОКНО (ОБЩЕЕ)
+   ======================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--color-white);
+    width: 90%;
+    max-width: 380px;
+    padding: 35px 28px;
+    border-radius: 24px;
+    text-align: center;
+    border: 2px solid var(--color-secondary);
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-content h3 {
+    font-family: var(--font-secondary);
+    font-size: 26px;
+    color: var(--color-primary);
+    margin-bottom: 14px;
+}
+
+.modal-content p {
+    font-size: 15px;
+    color: var(--color-gray);
+    margin-bottom: 28px;
+}
+
+.modal-close {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: scale(1.02);
+}
+
+/* ========================================================================
+   ПОДВАЛ (FOOTER)
+   ======================================================================== */
+footer {
+    background: var(--color-dark);
+    padding: 45px 0 30px;
+    border-top: 3px solid var(--color-secondary);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-logo {
+    font-family: var(--font-secondary);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.02);
+    text-shadow: 0 0 8px rgba(255, 217, 102, 0.5);
+}
+
+.footer-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: #333333;
+    padding: 10px 24px;
+    border-radius: 60px;
+    width: 260px;
+    transition: all 0.3s ease;
+}
+
+.footer-icon:hover {
+    background: var(--color-primary);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer-icon a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-icon:hover a {
+    color: var(--color-secondary);
+}
+
+.footer-icon img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.footer-icon:hover img {
+    transform: rotate(360deg);
+}
+
+.footer-line {
+    width: 80px;
+    height: 2px;
+    background: var(--color-secondary);
+    margin: 8px 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--color-gray-light);
+    font-size: 12px;
+}
+
+.footer-bottom p {
+    margin: 4px 0;
+}
+
+/* ========================================================================
+   ФИКСИРОВАННЫЕ КНОПКИ (КОРЗИНА И ТЕМА)
+   ======================================================================== */
+.cart-fixed {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 1100;
+}
+
+.theme-fixed {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1100;
+}
+
+#cart-icon, #theme-switch {
+    height: 52px;
+    width: 52px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#cart-icon:hover, #theme-switch:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#theme-switch svg {
+    fill: var(--color-primary);
+    width: 26px;
+    height: 26px;
+    transition: fill 0.3s ease;
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch {
+    background-color: #2a2a2a;
+}
+
+.darkmode #theme-switch svg {
+    fill: var(--color-secondary);
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+
+#cart-img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: bold;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-secondary);
+}
+
+.darkmode #cart-icon {
+    background-color: #2a2a2a;
+}
+
+.darkmode .cart-count {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* ========================================================================
+   МОДАЛЬНОЕ ОКНО КОРЗИНЫ (ЕДИНОЕ ДЛЯ ВСЕГО САЙТА)
+   ======================================================================== */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal.active {
+    display: flex;
+}
+
+.cart-modal-content {
+    background: var(--color-white);
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    animation: fadeInUp 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.darkmode .cart-modal-content {
+    background: #2a2a2a;
+    border: 1px solid var(--color-secondary);
+}
+
+.cart-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--color-secondary);
+    margin-bottom: 16px;
+}
+
+.cart-modal-header h3 {
+    margin: 0;
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+    font-size: 24px;
+}
+
+.darkmode .cart-modal-header h3 {
+    color: var(--color-secondary);
+}
+
+.close-cart-modal {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.close-cart-modal:hover {
+    transform: scale(1.1);
+    color: var(--color-secondary);
+}
+
+.darkmode .close-cart-modal {
+    color: var(--color-secondary);
+}
+
+.darkmode .close-cart-modal:hover {
+    color: var(--color-primary);
+}
+
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    padding-right: 8px;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--color-gray-light);
+}
+
+/* Стили для одного товара в корзине */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+    flex-wrap: wrap;
+    transition: background 0.3s ease;
+}
+
+.cart-item:hover {
+    background: rgba(255, 217, 102, 0.1);
+}
+
+.darkmode .cart-item {
+    border-bottom-color: #444;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    color: var(--color-dark);
+    min-width: 120px;
+}
+
+.darkmode .cart-item-name {
+    color: #fff;
+}
+
+.cart-item-price {
+    color: var(--color-primary);
+    font-weight: 600;
+    min-width: 70px;
+}
+
+.darkmode .cart-item-price {
+    color: var(--color-secondary);
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* КНОПКИ + И - В КОРЗИНЕ */
+.cart-qty-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-qty-btn:hover {
+    background: var(--color-secondary);
+    transform: scale(1.05);
+}
+
+.darkmode .cart-qty-btn {
+    background: #444;
+    color: #fff;
+}
+
+.darkmode .cart-qty-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.cart-item-total {
+    font-weight: 700;
+    color: var(--color-primary);
+    min-width: 70px;
+    text-align: right;
+}
+
+.darkmode .cart-item-total {
+    color: var(--color-secondary);
+}
+
+.cart-remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.cart-remove-btn:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.darkmode .cart-remove-btn:hover {
+    color: var(--color-secondary);
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-primary);
+    padding: 16px 0;
+    border-top: 2px solid var(--color-secondary);
+    margin-top: 16px;
+}
+
+.darkmode .cart-total {
+    color: var(--color-secondary);
+}
+
+.checkout-btn {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    padding: 14px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: scale(1.02);
+}
+
+/* ========================================================================
+   СТРАНИЦА КАТАЛОГА
+   ======================================================================== */
+
+/* Заголовок каталога */
+.catalog-header {
+    text-align: center;
+    padding: 30px 0 20px;
+}
+
+.catalog-header h1 {
+    font-family: var(--font-secondary);
+    font-size: clamp(28px, 6vw, 48px);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.darkmode .catalog-header h1 {
+    color: var(--color-secondary);
+}
+
+.catalog-header p {
+    font-size: clamp(14px, 4vw, 18px);
+    color: #666;
+}
+
+.darkmode .catalog-header p {
+    color: #aaa;
+}
+
+/* Кнопки выбора праздника */
+.holiday-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 3vw, 15px);
+    margin-bottom: 40px;
+}
+
+.holiday-btn {
+    background: transparent;
+    border: 2px solid var(--color-secondary);
+    padding: clamp(6px, 2vw, 10px) clamp(12px, 4vw, 24px);
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: clamp(13px, 3.5vw, 16px);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.darkmode .holiday-btn {
+    color: var(--color-secondary);
+}
+
+.holiday-btn.active {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+.darkmode .holiday-btn.active {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.holiday-btn:hover {
+    transform: translateY(-3px);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Адаптация кнопок праздника на мобилках */
+@media (max-width: 480px) {
+    .holiday-btn {
+        white-space: normal;
+        text-align: center;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Блок акции */
+.promo-section {
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+    border-radius: 28px;
+    padding: 28px 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.promo-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+.darkmode .promo-section {
+    background: #2a2a2a;
+    border-color: var(--color-secondary);
+}
+
+.promo-title {
+    font-family: var(--font-secondary);
+    font-size: clamp(22px, 5vw, 28px);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.darkmode .promo-title {
+    color: var(--color-secondary);
+}
+
+.promo-text {
+    font-size: clamp(14px, 3.5vw, 16px);
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.darkmode .promo-text {
+    color: #ccc;
+}
+
+.promo-date {
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    border-top: 1px dashed var(--color-primary);
+    display: inline-block;
+    padding-top: 8px;
+}
+
+.darkmode .promo-date {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+/* Адаптация блока акции */
+@media (max-width: 480px) {
+    .promo-section {
+        padding: 18px 14px;
+    }
+}
+
+/* Панель поиска и сортировки */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    background: var(--color-white);
+    padding: clamp(15px, 4vw, 20px);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.controls:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.darkmode .controls {
+    background: #2a2a2a;
+}
+
+.search-box {
+    flex: 2;
+    min-width: 180px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-family: var(--font-primary);
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.search-box input:hover {
+    border-color: var(--color-secondary);
+}
+
+.darkmode .search-box input {
+    background: var(--color-dark);
+    border-color: #444;
+    color: #fff;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(121, 25, 25, 0.1);
+}
+
+.search-btn {
+    background: var(--color-primary);
+    border: none;
+    border-radius: 50px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    background: var(--color-secondary);
+}
+
+.search-btn:hover .search-icon {
+    filter: brightness(0) invert(1);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.sort-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sort-box label {
+    font-weight: 500;
+    font-size: clamp(13px, 3.5vw, 15px);
+}
+
+.sort-select {
+    padding: 10px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-size: clamp(13px, 3.5vw, 15px);
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-select:hover {
+    border-color: var(--color-secondary);
+}
+
+.darkmode .sort-select {
+    background: var(--color-dark);
+    border-color: #444;
+    color: #fff;
+}
+
+/* Адаптация панели поиска */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box {
+        width: 100%;
+    }
+    .sort-box {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .controls {
+        padding: 12px;
+        gap: 12px;
+    }
+    .search-box input {
+        padding: 10px 14px;
+    }
+    .search-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .search-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .sort-select {
+        padding: 8px 12px;
+    }
+}
+
+/* Заголовок "Наши игры" */
+.popular-title-wrapper {
+    text-align: center;
+    margin: 40px 0 25px;
+}
+
+.popular-title {
+    font-family: var(--font-secondary);
+    font-size: clamp(24px, 5vw, 28px);
+    font-weight: 700;
+    color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.darkmode .popular-title {
+    color: var(--color-secondary);
+}
+
+.popular-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--color-secondary);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.popular-title:hover::after {
+    width: 80px;
+}
+
+/* Сетка карточек игр */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: #888;
+    grid-column: 1 / -1;
+}
+
+/* Адаптация сетки */
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+/* Карточка игры */
+.game-card {
+    background: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--color-secondary);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.darkmode .game-card {
+    background: #2a2a2a;
+    border-color: var(--color-secondary);
+}
+
+.game-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.05);
+}
+
+.game-card h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-primary);
+    margin: 12px 12px 4px;
+    transition: color 0.3s ease;
+}
+
+.game-card:hover h3 {
+    color: var(--color-secondary);
+}
+
+.game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 12px 8px;
+}
+
+.game-meta span {
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--color-secondary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #5e1313;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover .game-meta span {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.game-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--color-gray);
+    margin: 0 12px 10px;
+    flex: 1;
+}
+
+.darkmode .game-card p {
+    color: #bbb;
+}
+
+.game-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 12px 14px;
+}
+
+.game-btn {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-primary);
+    transform: translateX(3px);
+}
+
+.darkmode .game-btn {
+    color: var(--color-secondary);
+    border-bottom-color: var(--color-primary);
+}
+
+.darkmode .game-btn:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.add-to-cart {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart:hover {
+    transform: scale(1.15) rotate(90deg);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.darkmode .add-to-cart {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .add-to-cart:hover {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+/* Адаптация карточек на мобилках */
+@media (max-width: 600px) {
+    .game-card h3 {
+        font-size: 16px;
+        margin: 10px 10px 4px;
+    }
+    .game-meta {
+        margin: 0 10px 6px;
+    }
+    .game-meta span {
+        font-size: 9px;
+        padding: 2px 8px;
+    }
+    .game-card p {
+        font-size: 11px;
+        margin: 0 10px 8px;
+    }
+    .game-actions {
+        margin: 0 10px 12px;
+    }
+    .game-btn {
+        font-size: 11px;
+    }
+    .add-to-cart {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .game-card h3 {
+        font-size: 14px;
+    }
+    .game-meta span {
+        font-size: 8px;
+    }
+    .game-card p {
+        font-size: 10px;
+    }
+}
+
+/* Кнопки выбора возраста в модальном окне */
+.age-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.age-link {
+    display: inline-block;
+    background: #f0f0f0;
+    border: 1px solid var(--color-secondary);
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.age-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.darkmode .age-link {
+    background: var(--color-dark);
+    color: var(--color-secondary);
+}
+
+.darkmode .age-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+/* Адаптация кнопок возраста */
+@media (max-width: 480px) {
+    .age-link {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+}
+
+/* ========================================================================
+   СТРАНИЦА ИГРЫ
+   ======================================================================== */
+.game-container {
+    padding: 40px 0;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.game-header h1 {
+    font-family: var(--font-secondary);
+    font-size: clamp(32px, 8vw, 56px);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.darkmode .game-header h1 {
+    color: var(--color-secondary);
+}
+
+.game-subtitle {
+    font-size: clamp(16px, 4vw, 20px);
+    color: var(--color-gray);
+}
+
+.darkmode .game-subtitle {
+    color: #ccc;
+}
+
+.game-meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.game-meta-info span {
+    background: var(--color-secondary);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.game-meta-info span:hover {
+    transform: translateY(-2px);
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.darkmode .game-meta-info span {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.darkmode .game-meta-info span:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+/* Блок превью игры (картинка + описание) */
+.game-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+    background: var(--color-white);
+    border: 1px solid #ddd;
+    padding: 24px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.game-preview:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.darkmode .game-preview {
+    background: #2a2a2a;
+    border-color: #555;
+}
+
+.game-image {
+    flex: 1;
+    min-width: 200px;
+}
+
+.game-image img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    transition: transform 0.5s ease;
+}
+
+.game-image img:hover {
+    transform: scale(1.02);
+}
+
+.game-short-desc {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-short-desc p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Увеличение текста на десктопе */
+@media (min-width: 768px) {
+    .game-short-desc p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+}
+
+@media (min-width: 992px) {
+    .game-short-desc p {
+        font-size: 1.35rem;
+        line-height: 1.7;
+    }
+}
+
+.darkmode .game-short-desc p {
+    color: #ddd;
+}
+
+.game-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.game-favorite-btn, .game-cart-btn {
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-favorite-btn {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.game-cart-btn {
+    background: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.game-favorite-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(121, 25, 25, 0.3);
+}
+
+.game-cart-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(121, 25, 25, 0.3);
+}
+
+.darkmode .game-favorite-btn {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.darkmode .game-favorite-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.game-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 20px 0 15px;
+    font-family: var(--font-secondary);
+}
+
+.darkmode .game-price {
+    color: var(--color-secondary);
+}
+
+/* Рейтинг игры */
+.game-rating {
+    background: var(--color-white);
+    border: 1px solid #eee;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+.game-rating:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.darkmode .game-rating {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.game-rating h3 {
+    font-family: var(--font-secondary);
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.star {
+    font-size: 40px;
+    cursor: pointer;
+    color: #ccc;
+    transition: all 0.2s ease;
+}
+
+.star:hover {
+    transform: scale(1.2);
+    color: var(--color-secondary);
+}
+
+.star.selected {
+    color: var(--color-secondary);
+    text-shadow: 0 0 6px var(--color-secondary);
+}
+
+.rating-submit-btn {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border: none;
+    padding: 10px 28px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.rating-submit-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rating-value {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+
+.darkmode .rating-value {
+    color: #aaa;
+}
+
+/* Реквизит для игры */
+.section-wrapper {
+    text-align: center;
+}
+
+.requisites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.requisite-item {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.requisite-item:hover {
+    transform: translateY(-6px);
+}
+
+.requisite-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.requisite-item:hover .requisite-img {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.darkmode .requisite-img {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.requisite-item p {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.darkmode .requisite-item p {
+    color: #ddd;
+}
+
+/* Правила игры */
+.rules-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule-step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    align-items: flex-start;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.rule-step:hover {
+    transform: translateX(5px);
+}
+
+.rule-number {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.rule-step:hover .rule-number {
+    transform: scale(1.05);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .rule-number {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.darkmode .rule-step:hover .rule-number {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.rule-text h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.darkmode .rule-text h3 {
+    color: var(--color-secondary);
+}
+
+.rule-text p {
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+.darkmode .rule-text p {
+    color: #ccc;
+}
+
+/* Отзывы */
+.reviews-section {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.review-card {
+    background: var(--color-white);
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 28px rgba(121, 25, 25, 0.12);
+}
+
+.darkmode .review-card {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.review-header {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.review-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.review-card:hover .review-avatar {
+    transform: scale(1.05);
+    border-color: var(--color-primary);
+}
+
+.review-header h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.darkmode .review-header h4 {
+    color: #fff;
+}
+
+.review-stars {
+    color: var(--color-secondary);
+    font-size: 14px;
+}
+
+.review-text {
+    font-size: 14px;
+    margin: 12px 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+.darkmode .review-text {
+    color: #ddd;
+}
+
+.review-date {
+    font-size: 11px;
+    color: #999;
+}
+
+/* Заголовки секций */
+.section-title {
+    font-family: var(--font-secondary);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 48px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--color-secondary);
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.section-title:hover {
+    transform: scale(1.02);
+    text-shadow: 0 0 2px var(--color-secondary);
+}
+
+.darkmode .section-title {
+    color: var(--color-secondary);
+}
+
+/* Кнопка возврата в каталог */
+.game-back-btn {
+    text-align: center;
+    margin: 50px 0 30px;
+}
+
+.game-back-btn a {
+    display: inline-block;
+    padding: 12px 32px;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.game-back-btn a:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Уведомление */
+.custom-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    z-index: 10000;
+    animation: fadeInUp 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================================================
+   АНИМАЦИИ
+   ======================================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.9);
+    }
+}
+
+/* ========================================================================
+   АДАПТАЦИЯ СТРАНИЦЫ ИГРЫ (МОБИЛЬНЫЕ УСТРОЙСТВА)
+   ======================================================================== */
+@media (max-width: 768px) {
+    .game-preview {
+        flex-direction: column;
+        padding: 16px;
+    }
+    
+    .rule-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        margin-top: 36px;
+        margin-bottom: 20px;
+    }
+    
+    .game-price {
+        font-size: 28px;
+    }
+    
+    .star {
+        font-size: 32px;
+    }
+    
+    /* Адаптация корзины на планшетах */
+    .cart-modal-content {
+        padding: 16px;
+        max-width: 450px;
+    }
+    
+    .cart-modal-header h3 {
+        font-size: 20px;
+    }
+    
+    .close-cart-modal {
+        font-size: 24px;
+    }
+    
+    .cart-items-list {
+        padding-right: 4px;
+    }
+    
+    .cart-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    
+    .cart-item-name {
+        font-size: 13px;
+        min-width: 80px;
+        font-weight: 600;
+    }
+    
+    .cart-item-price {
+        font-size: 12px;
+        min-width: 50px;
+    }
+    
+    .cart-item-quantity {
+        gap: 6px;
+    }
+    
+    .cart-qty-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+    
+    .cart-item-quantity span {
+        font-size: 13px;
+        min-width: 20px;
+        text-align: center;
+    }
+    
+    .cart-item-total {
+        font-size: 12px;
+        min-width: 55px;
+        text-align: right;
+    }
+    
+    .cart-remove-btn {
+        font-size: 14px;
+    }
+    
+    .cart-total {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+    
+    .checkout-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 550px) {
+    .cart-item {
+        gap: 8px;
+    }
+    
+    .cart-item-name {
+        font-size: 12px;
+        min-width: 70px;
+    }
+    
+    .cart-item-price {
+        font-size: 11px;
+        min-width: 45px;
+    }
+    
+    .cart-qty-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+    }
+    
+    .cart-item-quantity span {
+        font-size: 12px;
+    }
+    
+    .cart-item-total {
+        font-size: 11px;
+        min-width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-actions {
+        flex-direction: column;
+    }
+    
+    .game-favorite-btn, .game-cart-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .requisites-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rule-number {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+    
+    .rule-text h3 {
+        font-size: 18px;
+    }
+    
+    .rating-stars {
+        gap: 8px;
+    }
+    
+    .star {
+        font-size: 28px;
+    }
+    
+    /* Адаптация корзины на телефонах */
+    .cart-modal-content {
+        padding: 12px;
+    }
+    
+    .cart-item-name {
+        font-size: 11px;
+        min-width: 60px;
+    }
+    
+    .cart-item-price {
+        font-size: 10px;
+        min-width: 40px;
+    }
+    
+    .cart-item-total {
+        font-size: 10px;
+        min-width: 45px;
+    }
+}

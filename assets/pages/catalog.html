@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- ========================================================================
+         ОСНОВНЫЕ МЕТА-ТЕГИ
+         ======================================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Гарипова Ясмина Рустямовна">
+    <meta name="description" content="AgeFun — Умный каталог игр для праздников. Выберите повод и возраст, получите подборку идеальных игр.">
+    <title>AgeFun — Умный каталог</title>
+    
+    <!-- ========================================================================
+         ПОДКЛЮЧЕНИЕ СТИЛЕЙ
+         ======================================================================== -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- ========================================================================
+     ШАПКА САЙТА (HEADER)
+     ======================================================================== -->
+<header>
+    <div class="container head">
+        <!-- Логотип с ссылкой на главную страницу -->
+        <a href="../../index.html" class="logo">AgeFun</a>
+        
+        <!-- Бургер-меню (отображается на мобильных устройствах) -->
+        <div class="burger" id="burgerBtn">
+            <span></span><span></span><span></span>
+        </div>
+        
+        <!-- Навигационное меню -->
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="#" class="active">Каталог</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ========================================================================
+     ОСНОВНОЙ КОНТЕНТ
+     ======================================================================== -->
+<main>
+    <div class="container">
+        
+        <!-- ========================================================================
+             ЗАГОЛОВОК КАТАЛОГА
+             ======================================================================== -->
+        <div class="catalog-header">
+            <h1>Умный каталог игр</h1>
+            <p>Выберите идеальную игру для вашего праздника</p>
+        </div>
+
+        <!-- ========================================================================
+             ВЫБОР ПРАЗДНИКА (ФИЛЬТР ПО ПОВОДУ)
+             ======================================================================== -->
+        <div class="holiday-selector">
+            <button class="holiday-btn" data-holiday="newyear">Новый год</button>
+            <button class="holiday-btn" data-holiday="birthday">День рождения</button>
+            <button class="holiday-btn" data-holiday="family">Семейный праздник</button>
+            <button class="holiday-btn" data-holiday="corporate">Корпоратив</button>
+        </div>
+
+        <!-- ========================================================================
+             БЛОК АКЦИИ
+             ======================================================================== -->
+        <div class="promo-section">
+            <div class="promo-title">Акция месяца</div>
+            <div class="promo-text">При заказе от 5 игр — скидка 20% на полный сценарий праздника!</div>
+            <div class="promo-text">Бесплатный список реквизита и чек-лист организатора</div>
+            <div class="promo-date">Действует до 31 мая</div>
+        </div>
+
+        <!-- ========================================================================
+             ПОИСК И СОРТИРОВКА
+             ======================================================================== -->
+        <div class="controls">
+            <!-- Блок поиска -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Поиск игр...">
+                <button class="search-btn" id="searchBtn">
+                    <img src="../img/search.png" alt="Иконка поиска" class="search-icon">
+                </button>
+            </div>
+            <!-- Блок сортировки -->
+            <div class="sort-box">
+                <label>Сортировать:</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="default">По умолчанию</option>
+                    <option value="name-asc">Название (А-Я)</option>
+                    <option value="name-desc">Название (Я-А)</option>
+                    <option value="players">По количеству игроков</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ========================================================================
+             ЗАГОЛОВОК "НАШИ ИГРЫ"
+             ======================================================================== -->
+        <div class="popular-title-wrapper">
+            <h2 class="popular-title">Наши игры</h2>
+        </div>
+
+        <!-- ========================================================================
+             СЕТКА КАРТОЧЕК ИГР (динамически заполняется через JavaScript)
+             ======================================================================== -->
+        <div class="games-grid" id="gamesGrid"></div>
+        
+    </div>
+</main>
+
+<!-- ========================================================================
+     ПОДВАЛ (FOOTER)
+     ======================================================================== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">AgeFun</div>
+            <div class="footer-icons">
+                <div class="footer-icon">
+                    <a href="#">Ясмина Гарипова</a>
+                    <img src="../img/vk.jpg" alt="Иконка ВКонтакте">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">+7 987 243-34-23</a>
+                    <img src="../img/number..jpg" alt="Иконка телефона">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">garipova270508</a>
+                    <img src="../img/MAX.jpg" alt="Иконка социальной сети">
+                </div>
+            </div>
+            <div class="footer-line"></div>
+            <div class="footer-bottom">
+                <p>Играйте с удовольствием</p>
+                <p>© 2026 AgeFun. Все права защищены</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ========================================================================
+     ФИКСИРОВАННЫЕ КНОПКИ
+     ======================================================================== -->
+
+<!-- Кнопка корзины (в левом нижнем углу) -->
+<div class="cart-fixed">
+    <div class="cart-wrapper">
+        <button id="cart-icon">
+            <img src="../img/cart-icon.png" alt="Иконка корзины" id="cart-img">
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </div>
+</div>
+
+<!-- Кнопка переключения тёмной/светлой темы (в правом нижнем углу) -->
+<div class="theme-fixed">
+    <button id="theme-switch">
+        <!-- Иконка солнца (светлая тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/>
+        </svg>
+        <!-- Иконка луны (тёмная тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
+        </svg>
+    </button>
+</div>
+
+<!-- ========================================================================
+     МОДАЛЬНЫЕ ОКНА
+     ======================================================================== -->
+
+<!-- Модальное окно для выбора возраста (срабатывает после выбора праздника) -->
+<div class="modal" id="holidayAgeModal">
+    <div class="modal-content">
+        <h3>Выберите возраст</h3>
+        <p id="selectedHolidayName">Для какого возраста подбираем игры?</p>
+        <div class="age-buttons">
+            <a href="#" class="age-link holiday-age-link" data-age="5-9">5-9 лет</a>
+            <a href="#" class="age-link holiday-age-link" data-age="9-14">9-14 лет</a>
+            <a href="#" class="age-link holiday-age-link" data-age="14-18">14-18 лет</a>
+            <a href="#" class="age-link holiday-age-link" data-age="18-35">18-35 лет</a>
+            <a href="#" class="age-link holiday-age-link" data-age="35+">35+ лет</a>
+        </div>
+        <button class="modal-close" id="closeHolidayModalBtn">Закрыть</button>
+    </div>
+</div>
+
+<!-- Модальное окно корзины (отображает добавленные товары) -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h3>Корзина</h3>
+            <button class="close-cart-modal" id="closeCartModalBtn">&times;</button>
+        </div>
+        <!-- Список товаров в корзине (динамически заполняется через JavaScript) -->
+        <div class="cart-items-list" id="cartItemsList">
+            <div class="empty-cart-message">Корзина пуста</div>
+        </div>
+        <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
+        <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+    </div>
+</div>
+
+<!-- ========================================================================
+     ПОДКЛЮЧЕНИЕ СКРИПТОВ
+     ======================================================================== -->
+<script src="../js/burger.js"></script>
+<script src="../js/catalog.js"></script>
+</body>
+</html>

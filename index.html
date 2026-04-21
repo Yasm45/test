@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- ========================================================================
+         ОСНОВНЫЕ МЕТА-ТЕГИ
+         ======================================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Гарипова Ясмина Рустямовна">
+    <meta name="description" content="AgeFun — сервис для подбора игр на праздники с учётом возраста участников">
+    <title>AgeFun — Главная страница</title>
+    
+    <!-- ========================================================================
+         ПОДКЛЮЧЕНИЕ СТИЛЕЙ
+         ======================================================================== -->
+    <!-- Bootstrap 5 для слайдера (карусели) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Основные стили проекта -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ========================================================================
+     ШАПКА САЙТА (HEADER)
+     ======================================================================== -->
+<header>
+    <div class="container head">
+        <!-- Логотип с ссылкой на главную -->
+        <a href="index.html" class="logo">AgeFun</a>
+        
+        <!-- Бургер-меню (отображается на мобильных устройствах) -->
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <!-- Навигационное меню (скрыто на мобилках, открывается по клику на бургер) -->
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="assets/pages/catalog.html">Каталог</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ========================================================================
+     ОСНОВНОЙ КОНТЕНТ (MAIN)
+     ======================================================================== -->
+<main>
+    
+    <!-- ========================================================================
+         ГЕРОЙ С ВИДЕО-ФОНОМ
+         ======================================================================== -->
+    <section class="hero">
+        <!-- Видео-фон (автозапуск, без звука, зациклено) -->
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/img/video.mp4" type="video/mp4">
+        </video>
+        <!-- Затемнение для читаемости текста -->
+        <div class="hero-overlay"></div>
+        <!-- Текстовый блок поверх видео -->
+        <div class="hero-content">
+            <h1>AgeFun</h1>
+            <p>Создайте праздник, который запомнится надолго!</p>
+            <span class="hero-tagline">Тысячи игр, фильтр по возрасту и поводу — идеальный сценарий за минуту</span>
+            <a href="assets/pages/catalog.html" class="hero-btn">Подобрать игры</a>
+        </div>
+    </section>
+
+    <!-- ========================================================================
+         СЕКЦИЯ "О НАС" (АККОРДЕОН)
+         ======================================================================== -->
+    <section class="about-us">
+        <div class="container">
+            <h2>О нас</h2>
+            <div class="accordion">
+                <!-- Элемент аккордеона 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Наша миссия</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Сделать организацию праздников простой, быстрой и доступной для каждой семьи.</p>
+                    </div>
+                </div>
+                <!-- Элемент аккордеона 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Что мы предлагаем</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Более 350 игр, фильтрация по возрасту, готовые сценарии и списки реквизита.</p>
+                    </div>
+                </div>
+                <!-- Элемент аккордеона 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Наши ценности</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Качество, доступность, забота о клиентах и постоянное развитие.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================
+         ЗАГОЛОВОК ПЕРЕД СЛАЙДЕРОМ
+         ======================================================================== -->
+    <div class="slider-caption">
+        <div class="container">
+            <p class="slider-text">Выберите праздник и погрузитесь в мир веселья</p>
+        </div>
+    </div>
+    
+    <!-- ========================================================================
+         СЛАЙДЕР (BOOTSTRAP КАРУСЕЛЬ)
+         ======================================================================== -->
+    <section class="container">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <!-- Индикаторы слайдов (точки внизу) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"></button>
+            </div>
+            <!-- Контейнер со слайдами -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/new_year.jpg" class="d-block w-100" alt="Новый год — праздник с ёлкой и подарками">
+                    <div class="carousel-caption">
+                        <h5>Новый год</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/birthday.jpg" class="d-block w-100" alt="День рождения — торт и поздравления">
+                    <div class="carousel-caption">
+                        <h5>День рождения</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/family.jpg" class="d-block w-100" alt="Семейный праздник — уют и радость">
+                    <div class="carousel-caption">
+                        <h5>Семейный праздник</h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/corporate_event.jpg" class="d-block w-100" alt="Корпоратив — тимбилдинг и драйв">
+                    <div class="carousel-caption">
+                        <h5>Корпоратив</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Кнопки переключения слайдов -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================================
+         ФИЛЬТР (ТАБЫ) — ПЕРЕКЛЮЧЕНИЕ МЕЖДУ РАЗДЕЛАМИ
+         ======================================================================== -->
+    <section class="filter-section">
+        <div class="container">
+            <!-- Кнопки-табы -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-tab="popular">Популярные игры</button>
+                <button class="filter-tab" data-tab="team">Наша команда</button>
+                <button class="filter-tab" data-tab="contacts">Контакты</button>
+                <button class="filter-tab" data-tab="feedback">Обратная связь</button>
+            </div>
+
+            <!-- ===== ТАБ 1: ПОПУЛЯРНЫЕ ИГРЫ ===== -->
+            <div class="tab-content active" id="tab-popular">
+                <div class="popular-grid">
+                    <!-- Карточка игры: Мафия -->
+                    <div class="popular-card">
+                        <div class="popular-img" style="background-image: url('assets/img/popular_mafia.jpg');"></div>
+                        <h3>Мафия</h3>
+                        <div class="game-meta"><span>6-12 чел</span><span>14+ лет</span></div>
+                        <div class="price">1 490 ₽</div>
+                        <p>Психологическая детективная игра</p>
+                        <a href="assets/pages/game.html?id=mafia" class="popular-btn">Подробнее →</a>
+                    </div>
+                    <!-- Карточка игры: Данетки -->
+                    <div class="popular-card">
+                        <div class="popular-img" style="background-image: url('assets/img/popular_danetki.jpg');"></div>
+                        <h3>Данетки</h3>
+                        <div class="game-meta"><span>4-10 чел</span><span>10+ лет</span></div>
+                        <div class="price">890 ₽</div>
+                        <p>Загадки с вопросами да/нет</p>
+                        <a href="assets/pages/game.html?id=danetki" class="popular-btn">Подробнее →</a>
+                    </div>
+                    <!-- Карточка игры: Фанты -->
+                    <div class="popular-card">
+                        <div class="popular-img" style="background-image: url('assets/img/popular_fant.jpg');"></div>
+                        <h3>Фанты</h3>
+                        <div class="game-meta"><span>5-15 чел</span><span>6+ лет</span></div>
+                        <div class="price">590 ₽</div>
+                        <p>Смешные задания из подручных средств</p>
+                        <a href="assets/pages/game.html?id=fanty" class="popular-btn">Подробнее →</a>
+                    </div>
+                    <!-- Карточка игры: Чепуха -->
+                    <div class="popular-card">
+                        <div class="popular-img" style="background-image: url('assets/img/popular_chepuha.jpg');"></div>
+                        <h3>Чепуха</h3>
+                        <div class="game-meta"><span>4-8 чел</span><span>12+ лет</span></div>
+                        <div class="price">1 190 ₽</div>
+                        <p>Ассоциативная игра с бумагой</p>
+                        <a href="assets/pages/game.html?id=chepuha" class="popular-btn">Подробнее →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== ТАБ 2: НАША КОМАНДА ===== -->
+            <div class="tab-content" id="tab-team">
+                <div class="team-grid">
+                    <!-- Карточка сотрудника 1 -->
+                    <div class="team-card">
+                        <div class="team-photo" style="background-image: url('assets/img/user_4.jpg');"></div>
+                        <h3>Анастасия Демьянова</h3>
+                        <p>Основатель и CEO</p>
+                        <span class="team-desc">Более 10 лет в организации праздников.</span>
+                    </div>
+                    <!-- Карточка сотрудника 2 -->
+                    <div class="team-card">
+                        <div class="team-photo" style="background-image: url('assets/img/user_3.webp');"></div>
+                        <h3>Наталья Парамонова</h3>
+                        <p>Главный разработчик</p>
+                        <span class="team-desc">Отвечает за технологии и удобство платформы.</span>
+                    </div>
+                    <!-- Карточка сотрудника 3 -->
+                    <div class="team-card">
+                        <div class="team-photo" style="background-image: url('assets/img/user_2.webp');"></div>
+                        <h3>Павел Максимов</h3>
+                        <p>Методист по играм</p>
+                        <span class="team-desc">Разрабатывает игровые механики и сценарии.</span>
+                    </div>
+                    <!-- Карточка сотрудника 4 -->
+                    <div class="team-card">
+                        <div class="team-photo" style="background-image: url('assets/img/user_1.webp');"></div>
+                        <h3>Григорий Клинов</h3>
+                        <p>Клиентский сервис</p>
+                        <span class="team-desc">Помогает пользователям и делает сервис лучше.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== ТАБ 3: КОНТАКТЫ ===== -->
+            <div class="tab-content" id="tab-contacts">
+                <div class="contacts-grid">
+                    <!-- Блок с контактной информацией -->
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <img src="assets/img/contact_adress.webp" alt="Иконка адреса" class="contact-icon-img">
+                            <div>
+                                <h3>Адрес</h3>
+                                <p>Республика Татарстан, г. Альметьевск, ул. Мира д. 8</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="assets/img/contact_number.png" alt="Иконка телефона" class="contact-icon-img">
+                            <div>
+                                <h3>Телефон</h3>
+                                <p>+7 987 243-34-23</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="assets/img/contact_mail.webp" alt="Иконка email" class="contact-icon-img">
+                            <div>
+                                <h3>Email</h3>
+                                <p>Aikina@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="assets/img/contact_time.webp" alt="Иконка времени работы" class="contact-icon-img">
+                            <div>
+                                <h3>Режим работы</h3>
+                                <p>Ежедневно с 9:00 до 21:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Яндекс.Карта с расположением офиса -->
+                    <div class="contact-map">
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=52.297%2C54.903&z=12&pt=52.297,54.903,pmrdl" width="100%" height="300" frameborder="0" allowfullscreen title="Карта офиса AgeFun"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== ТАБ 4: ОБРАТНАЯ СВЯЗЬ ===== -->
+            <div class="tab-content" id="tab-feedback">
+                <div class="feedback-form-wrapper">
+                    <!-- Форма для отправки сообщения -->
+                    <form class="feedback-form" id="feedbackForm">
+                        <div class="form-row">
+                            <input type="text" id="feedbackName" placeholder="Ваше имя" required>
+                            <input type="email" id="feedbackEmail" placeholder="Ваш Email" required>
+                        </div>
+                        <textarea id="feedbackMessage" rows="4" placeholder="Ваше сообщение" required></textarea>
+                        <button type="submit" class="feedback-btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ========================================================================
+     ПОДВАЛ (FOOTER)
+     ======================================================================== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">AgeFun</div>
+            <div class="footer-icons">
+                <div class="footer-icon">
+                    <a href="#">Ясмина Гарипова</a>
+                    <img src="assets/img/vk.jpg" alt="Иконка ВКонтакте">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">+7 987 243-34-23</a>
+                    <img src="assets/img/number..jpg" alt="Иконка телефона">
+                </div>
+                <div class="footer-icon">
+                    <a href="#">garipova270508</a>
+                    <img src="assets/img/MAX.jpg" alt="Иконка социальной сети">
+                </div>
+            </div>
+            <div class="footer-line"></div>
+            <div class="footer-bottom">
+                <p>Играйте с удовольствием</p>
+                <p>© 2026 AgeFun. Все права защищены</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ========================================================================
+     ФИКСИРОВАННЫЕ КНОПКИ
+     ======================================================================== -->
+<!-- Кнопка переключения тёмной/светлой темы (в правом нижнем углу) -->
+<div class="theme-fixed">
+    <button id="theme-switch">
+        <!-- Иконка солнца (светлая тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/>
+        </svg>
+        <!-- Иконка луны (тёмная тема) -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
+        </svg>
+    </button>
+</div>
+
+<!-- ========================================================================
+     МОДАЛЬНОЕ ОКНО ОБРАТНОЙ СВЯЗИ
+     ======================================================================== -->
+<div class="modal" id="feedbackModal">
+    <div class="modal-content">
+        <h3>Спасибо!</h3>
+        <p>Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.</p>
+        <button class="modal-close" id="closeFeedbackModal">Закрыть</button>
+    </div>
+</div>
+
+<!-- ========================================================================
+     ПОДКЛЮЧЕНИЕ СКРИПТОВ
+     ======================================================================== -->
+<!-- Bootstrap JS для работы слайдера -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Бургер-меню -->
+<script src="assets/js/burger.js"></script>
+<!-- Основной JS для главной страницы -->
+<script src="assets/js/index.js"></script>
+</body>
+</html>
